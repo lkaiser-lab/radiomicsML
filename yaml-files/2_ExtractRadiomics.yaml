@@ -1,0 +1,19 @@
+general_settings:
+  radiomics_yaml_file: '/radiomics_yaml_file.yaml'
+  path: '/pat_path' # Input path containing patient folders
+  out_path: '/pat_path/results'
+  do_shape: False
+  do_interpolation: True
+
+images:
+  img_sufs:
+    img1: '*_PET1.nii',
+    img2: '*_PET2.nii'
+
+  vol_sufs:
+    img1: '*_PET1_seg_16.nii'
+    img2: '*_PET2_seg_16.nii'
+
+  bin_widths:
+    img1: 0.1
+    img2: 0.2

@@ -1,0 +1,16 @@
+inputInfo:
+  path: '/pat_path' # Input path containing patient folders
+
+inputImages:
+  conf_suf: '*Conf.nii' # Confining volume
+  bg_suf: '*_BG.nii' # Background volume
+  ini_suf: '*_ini.nii' # Image containing seeds for segmentation if required
+  img_sufs: ['*_PET1.nii', '*_PET2.nii'] # All modalities/scans available for each patient
+  img_labels: ['PET1', 'PET2'] # Labels to be used for saving data
+  df_suv_files: ['PET1_suv.xlsx', 'PET2_suv.xlsx'] # If SUV-normalization should be performed using Excel file with first column containing patient names and one column 'activities' and one 'weights'
+
+  norm_img_sufs: [] # image suffixes using '*' if voxel-wise normalization to another image should be performed
+
+processingInfo:
+  bg_threshs: [1.3, 1.6, 1.8] # if no segmentation should be performed: []
+  max_treshs: [0.4, 0.6] # if no segmentation should be performed: []

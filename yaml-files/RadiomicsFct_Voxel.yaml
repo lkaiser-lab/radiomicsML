@@ -1,0 +1,29 @@
+imageType:
+  Original: {}
+#  LoG: {}
+#  Wavelet: {}
+
+featureClass:
+  glcm:
+    - 'ClusterProminence'
+    - 'ClusterShade'
+    - 'Idmn'
+  gldm:
+    - 'LowGrayLevelEmphasis'
+#  glrlm:
+  glszm:
+    - 'SizeZoneNonUniformityNormalized'
+    - 'SmallAreaHighGrayLevelEmphasis'
+    - 'ZoneVariance'
+#  ngtdm:
+
+
+setting:
+  # Resampling:
+  interpolator: 'sitkLinear' # sitkLinear, sitkBSpline
+#  resampledPixelSpacing: [1, 1, 1] # null, [1, 1, 1], ...
+
+  geometryTolerance: 1e-4
+  kernelRadius: 2
+  maskedKernel: True
+  voxelBatch: 10000

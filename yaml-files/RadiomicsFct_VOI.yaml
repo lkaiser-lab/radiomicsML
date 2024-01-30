@@ -1,0 +1,21 @@
+imageType:
+  Original: {}
+#  LoG: {}
+#  Wavelet: {}
+
+featureClass:
+  shape:
+  firstorder:
+  glcm:
+  gldm:
+  glrlm:
+  glszm:
+  ngtdm:
+
+
+setting:
+  # Resampling:
+  interpolator: 'sitkLinear' # sitkLinear, sitkBSpline
+#  resampledPixelSpacing: "in-plane" # [1, 1, 1], in-plane
+
+  geometryTolerance: 1e-4
