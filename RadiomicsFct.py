@@ -64,6 +64,8 @@ def do_radiomics(pat_dirs, img_suf, mask_suf, bin_width, out_path, par_name,
         inputImage = ip.find_load(img_suf, pat_dir)
         if inputImage is None:
             continue
+
+        inputImage = ip.mask_vals(inputImage, below=0, above=bin_width*200)
         pat_names.append(pat_name)
 
         # Initialize variables for VOI processing
@@ -129,8 +131,15 @@ def save_results_to_excel(df_list, df_col_group, df_col_feature, pat_names, out_
     df_empty = pd.DataFrame([], columns=multi_ind_columns)
 
     df_empty.to_excel(writer, f"VOI_{voi_label}")
-    df.to_excel(writer, f"VOI_{voi_label}", header=False, startrow=2)
 
+    def convert_to_float(x):
+        try:
+            return float(x)
+        except ValueError:
+            return x
+
+    df = df.applymap(convert_to_float)
+    df.to_excel(writer, f"VOI_{voi_label}", header=False, startrow=2)
     writer.save()
     writer.close()
 

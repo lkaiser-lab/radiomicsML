@@ -68,7 +68,7 @@ if df_suv_files.size > 0:
 
 # Process each patient directory
 for pat_dir in PatientDir:
-    pat_name = os.path.split(os.path.dirname(pat_dir))[1]
+    pat_name = os.path.split(pat_dir)[1]
     print(f"Processing patient: {pat_name}")
     par_results_dir = pat_dir + os.path.sep + 'results'
 
