@@ -14,7 +14,7 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 import sys
 import time
 import os
-import RadiomicsFct as radiomics
+import RadiomicsFct as rf
 import yaml
 
 sys.path.append(os.path.abspath('..'+os.path.sep+'image_processing'))
@@ -54,7 +54,7 @@ for suffix_name, file_pattern in img_sufs.items():
     vol_suf = vol_sufs[suffix_name]
     bin_width = bin_widths[suffix_name]
 
-    radiomics.do_radiomics(PatientDir, img_sufs[suffix_name],
+    rf.do_radiomics(PatientDir, img_sufs[suffix_name],
                            vol_sufs[suffix_name],
                            bin_widths[suffix_name],
                            out_path, suffix_name,
