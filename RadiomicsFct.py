@@ -50,6 +50,8 @@ def do_radiomics(pat_dirs, img_suf, mask_suf, bin_width, out_path, par_name,
     for pat_dir in pat_dirs:
         # Load the mask image and extract patient name
         mask_image = ip.find_load(mask_suf, pat_dir)
+        if mask_image is None:
+            mask_image = ip.find_load(mask_suf, os.path.dirname(pat_dir))
         pat_name = mask_image.GetMetaData("0010|0010")
         print(pat_name)  # Output the patient name
 
