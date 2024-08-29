@@ -129,12 +129,14 @@ def save_results_to_excel(df_list, df_col_group, df_col_feature, pat_names, out_
     tuples = list(zip(*[col0, df_col_group, df_col_feature]))
     multi_ind_columns = pd.MultiIndex.from_tuples(tuples, names=('Parameter', 'Group', 'Feature'))
 
-    df = pd.DataFrame(df_list, columns=multi_ind_columns, index=pat_names, dtype="float")
-    df_empty = pd.DataFrame([], columns=multi_ind_columns)
+    df = pd.DataFrame(df_list, columns=multi_ind_columns, index=pat_names)
 
+    df_empty = pd.DataFrame([], columns=multi_ind_columns)
     df_empty.to_excel(writer, f"VOI_{voi_label}")
 
     def convert_to_float(x):
+        if x is None:
+            return x
         try:
             return float(x)
         except ValueError:
@@ -142,7 +144,6 @@ def save_results_to_excel(df_list, df_col_group, df_col_feature, pat_names, out_
 
     df = df.applymap(convert_to_float)
     df.to_excel(writer, f"VOI_{voi_label}", header=False, startrow=2)
-    writer.save()
     writer.close()
 
 
